@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
 
-{% block navigation %}
-{% if generation %}
-{{ generation }}
-<hr/>
-{% endif %}
+{% block content %}
 <div class="form-wrapper">
   <form method="post" action="generate" enctype="multipart/form-data">
     <div>
-      <textarea id="input-text" rows="5" name="text" placeholder="Type here"></textarea>
+      <textarea id="input-text" rows="5" name="text" placeholder="Type here">{% if prompt %}{{ prompt }}{% endif %}</textarea>
     </div>
     <div>
-      Format:
-      <select name="format" id="format_select">
-	<option value="html">Web page (.html)</option>
-	<option value="txt">Plain text (.txt)</option>
-      </select>
+      <input type="range" id="length" name="length" value="{{ length }}" min="1" max="100" step="1">
+      <label for="length">Length</label>
+    </div>
+    <div>
       <button type="submit" class="btn btn-primary" id="submit_button">Submit</button>
+      <input type="range" id="temperature" name="temperature" value="{{ temperature }}" min="0.1" max="10">
+      <label for="temperature">Temperature</label>
     </div>
   </form>
 </div>
+{% if generation %}
+<hr/>
+<span class="prompt">{{ prompt }}</span><span class="generation">{{ generation }}</span>
+{% endif %}
 {% endblock %}
