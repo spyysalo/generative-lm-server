@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+<div class="form-wrapper">
+  <form method="post" action="generate" enctype="multipart/form-data">
+    <div>
+      <textarea id="input-text" rows="5" name="text" placeholder="Type here"></textarea>
+    </div>
+    <div>
+      Format:
+      <select name="format" id="format_select">
+	<option value="html">Web page (.html)</option>
+	<option value="txt">Plain text (.txt)</option>
+      </select>
+      <button type="submit" class="btn btn-primary" id="submit_button">Submit</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

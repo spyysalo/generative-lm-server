@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Generative language model demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style type="text/css">
+      .page-content {
+          font-family: 'Open Sans', sans-serif;
+          font-size: {{ config['FONT_SIZE'] }}px;
+      }
+    </style>
+{% block head %}{% endblock %}
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="header-row">
+        <div><a id="homelink" href="{{ url_for('view.root') }}">Generative language model demo</a></div>
+	<!-- <div id="spinner"><i class="fas fa-cog fa-spin"></i></div> -->
+      </div>      
+    </header>
+    <div class="page-content">
+{% block navigation %}{% endblock %}
+<hr/>
+{% block content %}{% endblock %}
+<hr/>
+    </div>
+    <footer class="page-footer">
+    </footer>
+  </body>
+</html>

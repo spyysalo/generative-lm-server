@@ -1,0 +1,25 @@
+{% extends 'genbase.html' %}
+
+{% block legend %}
+{{ legend|safe }}
+{% endblock %}
+
+{% block generations %}
+<script>
+</script>
+<script>
+window.onload = load;
+</script>
+
+<div class="visualization column">
+  <div class="pa-above">{{ content|safe }}</div>
+<div>
+{% for label, url in config['SEARCH_CONFIG'] %}
+<hr/>
+<b>{{ label }}</b>:
+{% for s in annotated_strings %}
+| <a href="{{ url }}{{ s }}" target="_blank" rel="noopener">{{ s }}</a>
+{% endfor %}
+{% endfor %}
+</div>
+{% endblock %}

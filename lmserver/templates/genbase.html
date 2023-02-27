@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/visualization.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/'+config['FONT_FILE']) }}">
+{% endblock %}
+
+{% block navigation %}
+{% endblock %}
+
+{% block content %}
+<div class="visualization-wrapper">
+  <div class="legend-wrapper">
+    {% block legend %}{% endblock %}
+  </div>
+  <div class="generations">
+    {% block generations %}{% endblock %}
+  </div>
+</div>
+{% endblock %}
