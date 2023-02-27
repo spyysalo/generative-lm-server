@@ -76,3 +76,12 @@ div.form-wrapper {
 #submit_button {
     float: right;
 }
+
+.prompt {
+    white-space: pre;
+    font-weight: bold;
+}
+
+.generation {
+    white-space: pre;
+}
