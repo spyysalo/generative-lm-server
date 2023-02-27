@@ -1,5 +1,7 @@
 import requests
 
+import lmserver.model
+
 from flask import Blueprint
 from flask import request, url_for, render_template, jsonify, make_response
 from flask import current_app as app
@@ -22,4 +24,6 @@ def show_index():
 def tag_text():
     text = str(request.values['text'])
     format_ = str(request.values.get('format', 'html'))
-    return render_template('generate.html', **locals())
+    generation = lmserver.model.generate(app.tokenizer, app.model, text)
+    print(generation)
+    return render_template('index.html', **locals())

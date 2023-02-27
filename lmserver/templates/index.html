@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block navigation %}
+{% if generation %}
+{{ generation }}
+<hr/>
+{% endif %}
 <div class="form-wrapper">
   <form method="post" action="generate" enctype="multipart/form-data">
     <div>
