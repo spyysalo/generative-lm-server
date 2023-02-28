@@ -11,7 +11,7 @@ def create_app():
 
     app.config.from_pyfile('config.py') #, silent=True)
 
-    app.tokenizer, app.model = lmserver.model.load(app.config['MODEL'])
+    app.model = lmserver.model.setup(app.config['MODEL'])
     
     from . import view
     app.register_blueprint(view.bp)
