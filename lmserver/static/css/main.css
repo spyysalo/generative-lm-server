@@ -78,10 +78,10 @@ div.form-wrapper {
 }
 
 .prompt {
-    white-space: pre;
+    white-space: pre-wrap;
     font-weight: bold;
 }
 
 .generation {
-    white-space: pre;
+    white-space: pre-wrap;
 }
