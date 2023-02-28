@@ -2,6 +2,8 @@ import requests
 
 import lmserver.model
 
+from logging import warning
+
 from flask import Blueprint
 from flask import request, url_for, render_template, jsonify, make_response
 from flask import current_app as app
@@ -15,7 +17,6 @@ def root():
     return show_index()
 
 
-@bp.route('/')
 @bp.route('/generate', methods=['GET', 'POST'])
 def show_index():
     try:
@@ -34,9 +35,7 @@ def show_index():
     if not prompt:
         generation = ""
     else:
-        generation = lmserver.model.generate(
-            app.tokenizer,
-            app.model,
+        generation = app.model.generate(
             prompt,
             temperature=temperature,
             new_tokens=length,
@@ -44,5 +43,6 @@ def show_index():
         if generation.startswith(prompt):
             generation = generation[len(prompt):]
         else:
-            print(f'MISMATCH:\n"{repr(prompt)}"\n"{repr(generation)}"')
+            warning(f'MISMATCH:\n"{repr(prompt)}"\n"{repr(generation)}"')
+            prompt = ''
     return render_template('index.html', **locals())
