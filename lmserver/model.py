@@ -1,6 +1,6 @@
 import requests
 
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, set_seed
 
 
 class LocalModel:
@@ -9,7 +9,10 @@ class LocalModel:
         self.model = model
         self.name = name
 
-    def generate(self, prompt, temperature=0.7, new_tokens=50):
+    def generate(self, prompt, temperature=0.7, new_tokens=50, seed=None):
+        if seed is not None:
+            set_seed(seed)
+
         input_ = self.tokenizer(prompt, return_tensors='pt')
         output = self.model.generate(
             **input_,
@@ -33,12 +36,13 @@ class RemoteModel:
         self.url = url
         self.name = None
 
-    def generate(self, prompt, temperature=0.7, new_tokens=50):
+    def generate(self, prompt, temperature=0.7, new_tokens=50, seed=None):
         data_in = {
             'prompt': prompt,
             'temperature': temperature,
             'min_new_tokens': new_tokens,
             'max_new_tokens': new_tokens,
+            'seed': seed,
         }
         r = requests.post(self.url, json=data_in)
         data_out = r.json()
