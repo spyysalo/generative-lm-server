@@ -21,4 +21,8 @@
 <hr/>
 <span class="prompt">{{ prompt }}</span><span class="generation">{{ generation }}</span>
 {% endif %}
+{% if model_name %}
+<hr/>
+<div class="model-name">Model: {{ model_name }}</div>
+{% endif %}
 {% endblock %}

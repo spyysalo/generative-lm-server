@@ -85,3 +85,10 @@ div.form-wrapper {
 .generation {
     white-space: pre-wrap;
 }
+
+.model-name {
+    font-size: x-small;
+    color: gray;
+    width: 100%;
+    text-align: end;
+}
