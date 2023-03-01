@@ -4,9 +4,10 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 
 class LocalModel:
-    def __init__(self, tokenizer, model):
+    def __init__(self, tokenizer, model, name):
         self.tokenizer = tokenizer
         self.model = model
+        self.name = name
 
     def generate(self, prompt, temperature=0.7, new_tokens=50):
         input_ = self.tokenizer(prompt, return_tensors='pt')
@@ -24,12 +25,13 @@ class LocalModel:
     def load(cls, name):
         tokenizer = AutoTokenizer.from_pretrained(name)
         model = AutoModelForCausalLM.from_pretrained(name)
-        return cls(tokenizer, model)
+        return cls(tokenizer, model, name)
 
 
 class RemoteModel:
     def __init__(self, url):
         self.url = url
+        self.name = None
 
     def generate(self, prompt, temperature=0.7, new_tokens=50):
         data_in = {
@@ -40,6 +42,8 @@ class RemoteModel:
         }
         r = requests.post(self.url, json=data_in)
         data_out = r.json()
+        if 'model_name' in data_out:
+            self.name = data_out['model_name']
         return data_out['generation']
 
 
