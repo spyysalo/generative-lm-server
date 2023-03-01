@@ -7,12 +7,12 @@
       <textarea id="input-text" rows="5" name="text" placeholder="Type here">{% if prompt %}{{ prompt }}{% endif %}</textarea>
     </div>
     <div>
-      <input type="range" id="length" name="length" value="{{ length }}" min="1" max="100" step="1">
+      <input type="range" id="length" name="length" value="{{ length }}" min="1" max="250" step="1">
       <label for="length">Length</label>
     </div>
     <div>
       <button type="submit" class="btn btn-primary" id="submit_button">Submit</button>
-      <input type="range" id="temperature" name="temperature" value="{{ temperature }}" min="0.1" max="10">
+      <input type="range" id="temperature" name="temperature" value="{{ temperature }}" min="0.1" max="2" step="0.1">
       <label for="temperature">Temperature</label>
     </div>
   </form>
