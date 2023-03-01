@@ -1,3 +1,5 @@
+import requests
+
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 
@@ -25,8 +27,24 @@ class LocalModel:
         return cls(tokenizer, model)
 
 
+class RemoteModel:
+    def __init__(self, url):
+        self.url = url
+
+    def generate(self, prompt, temperature=0.7, new_tokens=50):
+        data_in = {
+            'prompt': prompt,
+            'temperature': temperature,
+            'min_new_tokens': new_tokens,
+            'max_new_tokens': new_tokens,
+        }
+        r = requests.post(self.url, json=data_in)
+        data_out = r.json()
+        return data_out['generation']
+
+
 def setup(name):
     if name.startswith('http'):
-        raise NotImplementedError
+        return RemoteModel(name)
     else:
         return LocalModel.load(name)
