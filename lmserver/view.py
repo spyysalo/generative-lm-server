@@ -45,4 +45,5 @@ def show_index():
         else:
             warning(f'MISMATCH:\n"{repr(prompt)}"\n"{repr(generation)}"')
             prompt = ''
+    model_name = app.model.name
     return render_template('index.html', **locals())
