@@ -1,0 +1,5 @@
+{ "label": "squirrel interview", "url": "http://ann.turkunlp.org:9099/lmserver/generate?text=This%20is%20an%20interview%20with%20a%20squirrel.%0A%0AReporter:%20Hi,%20nice%20to%20meet%20you.%20What%20is%20it%20like%20being%20a%20squirrel?%0A%0ASquirrel:&length=100&seed=42" }
+{ "label": "cake recipe", "url": "http://ann.turkunlp.org:9099/lmserver/generate?text=Here+is+a+detailed+step-by-step+recipe+for+an+easy+and+delicious+carrot+cake%3A%0A%0A-&seed=4126668470&length=100&temperature=0.7" }
+{ "label": "life advice", "url": "http://ann.turkunlp.org:9099/lmserver/generate?text=The+best+life+advice+I+have+ever+been+given+is%3A&seed=2011923382&length=100&temperature=0.7" }
+{ "label": "gift ideas", "url": "http://ann.turkunlp.org:9099/lmserver/generate?text=Here+are+some+creative+birthday+gift+ideas+for+teenagers%3A%0A%0A-&seed=1410916034&length=100&temperature=0.7" }
+{ "label": "best movie", "url": "http://ann.turkunlp.org:9099/lmserver/generate?text=In+my+opinion,+by+far+the+best+movie+of+the+last+decade+is&seed=2356619550&length=100&temperature=0.7" }
