@@ -77,6 +77,10 @@ div.form-wrapper {
     float: right;
 }
 
+.output-wrapper {
+    margin-right: 2em;
+}
+
 .prompt {
     white-space: pre-wrap;
     font-weight: bold;
@@ -86,8 +90,13 @@ div.form-wrapper {
     white-space: pre-wrap;
 }
 
+.genlink {
+    font-size: small;
+    float: right;
+}
+
 .model-name {
-    font-size: x-small;
+    font-size: small;
     color: gray;
     width: 100%;
     text-align: end;
